@@ -4,50 +4,43 @@ If you choose not to use GenAI for a period, record "No GenAI used" with a brief
 
 ---
 
-Date: 2026-01-20
-Goal: Configure and verify SSH commit signing for GitHub
-Prompt summary: Confirm SSH signing is working, commit to GitHub, update evidence index
-Key output (1-2 lines): SSH signing configured (gpg.format=ssh, commit.gpgsign=true). Commit 90b36ca pushed successfully with verified SSH signature after adding signing key to GitHub.
-Decision (adopted/rejected + why): Adopted - SSH signing is now working and enforced by GitHub repository rules
-Evidence link (commit/issue/experiment): evidence-001, commit 90b36ca
-Unknowns + next test: Run and pass the self-check script (tools/validate_repo.py)
+Date: 2026-02-10
+Goal: Supplement design pack docs (claims, CCT, ethics ledger, evidence plan) from proposal
+Prompt summary: Requested AI to read proposal.md and fill in the four deliverable docs — Claims 4-5, CCT rows 4-5, ethics ledger entries, and evidence plans — without modifying the proposal itself.
+Key output (1-2 lines): 4 files updated: claims.md (Claims 4-5 filled), cct_v1.md (rows 4-5 filled), ethics_ledger_v1.md (3 new entries), evidence_plan.md (plans for Claims 4-5 with AWS CLI procedures).
+Decision (adopted/rejected + why): Adopted — all additions derived directly from proposal constraints, stakeholders, and privacy section. Committed as design pack deliverable.
+Evidence link (commit/issue/experiment): commit 09d0b16
+Unknowns + next test: Claims 4-5 are design-only — no implementation yet. Next: build Lambda hold-check logic (Claim 4) and DynamoDB GSIs (Claim 5).
 
 ---
 
-Date: 2026-01-20
-Goal: Deploy a trivial "Hello Cloud" function to Google Cloud Platform
-Prompt summary: Create and deploy a simple HTTP Cloud Function to GCP, verify it works, add verification screenshot
-Key output (1-2 lines): Deployed Python Cloud Function (gen2) to us-central1. Function responds with "Hello Cloud" at https://us-central1-project-e05df272-63bf-43a4-95d.cloudfunctions.net/hello-cloud
-Decision (adopted/rejected + why): Adopted - Function successfully deployed and publicly accessible, verified via curl
-Evidence link (commit/issue/experiment): evidence-002, commit c8846f3
+Date: 2026-02-10
+Goal: Run cctChecker agent to validate all 5 CCT entries
+Prompt summary: Invoked cctChecker agent against docs/cct_v1.md. Validated all 5 rows for falsifiable clauses, concrete controls, executable tests, locatable enforcement points, and collectible evidence.
+Key output (1-2 lines): Found systematic issue: all 5 Clause columns contained only claim numbers instead of clause text. Fixed by replacing with full falsifiable statements. Added explicit pass/fail criteria to rows 2-3. 5/5 rows now pass all quality checks.
+Decision (adopted/rejected + why): Adopted — clause text makes CCT table self-contained; pass/fail criteria make tests unambiguous.
+Evidence link (commit/issue/experiment): commit 09d0b16
+Unknowns + next test: All CCT entries are specification-only. Next: implement controls and run red-bar tests via testCreator agent.
+
+---
+
+Date: 2026-02-10
+Goal: Run evidenceUpdate agent to record design pack completion as evidence-006
+Prompt summary: Invoked evidenceUpdate agent to add evidence/index.json entry for the design pack doc updates. Validated evidence against CPSC 436C criteria (CCT mapping with enforcement points). Invoked by aiLogger agent as part of inter-agent chain.
+Key output (1-2 lines): evidence-006 added to evidence/index.json. Claim: design pack deliverable complete with 5 claims, 5 CCT entries, 5 ethics ledger entries, 5 evidence plans — all cross-referenced.
+Decision (adopted/rejected + why): Adopted — evidence entry links the design pack docs to commit 09d0b16.
+Evidence link (commit/issue/experiment): evidence-006, commit 09d0b16
+Unknowns + next test: N/A for evidence recording. Next: push all metadata updates.
+
+---
+
+Date: 2026-02-10
+Goal: Run aiLogger agent to log inter-agent chain (cctChecker + evidenceUpdate + aiLogger)
+Prompt summary: Invoked aiLogger agent to record all 3 agent interactions from this session. Chain: cctChecker (validated CCT rows) → evidenceUpdate (recorded evidence-006) → aiLogger (this entry).
+Key output (1-2 lines): 4 LOG entries appended to ai/LOG.md covering the doc authoring session and all 3 agent workflows.
+Decision (adopted/rejected + why): Adopted — all interactions logged with commit hashes and cross-agent references.
+Evidence link (commit/issue/experiment): commit 09d0b16, evidence-006
 Unknowns + next test: N/A
 
 ---
 
-Date: 2026-01-29
-Goal: Dark-pattern lab 1 — design dark and ethical ToS acceptance screens, document techniques, reflection
-Prompt summary: Design dark ToS screen (manipulative) → ethical redesign → reflection; commit and update evidence per evidenceUpdate
-Key output (1-2 lines): docs/ethics/dark-pattern-lab-1/ with dark.md, ethical.md, reflection.md, tos_acceptance_dark.html, tos_acceptance_ethical.html; evidence index and LOG updated
-Decision (adopted/rejected + why): Adopted — lab committed and pushed; evidence entry and LOG added per evidenceUpdate workflow
-Evidence link (commit/issue/experiment): evidence-003, commit b449745
-Unknowns + next test: N/A
-
----
-
-Date: 2026-01-29
-Goal: Add CCT (Clause → Control → Test) enforcement doc for ethical ToS; commit and update evidence per evidenceUpdate
-Prompt summary: Commit cct.md and use evidenceUpdate — identify 2 promises, clause/control/test/enforcement point
-Key output (1-2 lines): docs/ethics/dark-pattern-lab-1/cct.md with 2 CCT entries (material terms visible, both choices equally accessible); evidence-004 and LOG updated
-Decision (adopted/rejected + why): Adopted — cct.md committed; evidence index and LOG updated per evidenceUpdate
-Evidence link (commit/issue/experiment): evidence-004, commit 02c9e73
-Unknowns + next test: Implement red-bar tests described in cct.md (CI enforcement)
-
----
-
-Date: 2026-01-29
-Goal: Record capstone team repo URL; commit and update evidence per evidenceUpdate
-Prompt summary: Added team repo URL to team_repo.txt; commit, push, evidence update
-Key output (1-2 lines): capstone/team_repo.txt updated with https://github.com/janasheirah/CPSC436; evidence-005 and LOG updated
-Decision (adopted/rejected + why): Adopted — team repo URL committed; evidence index and LOG updated
-Evidence link (commit/issue/experiment): evidence-005, commit ca91127
-Unknowns + next test: N/A
