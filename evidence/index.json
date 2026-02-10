@@ -2,53 +2,6 @@
   "evidence": [
     {
       "id": "evidence-001",
-      "claim": "SSH commit signing is working",
-      "enforcement_point": "git commit signing with SSH key",
-      "command": "git cat-file commit HEAD",
-      "output": "gpgsig -----BEGIN SSH SIGNATURE----- ... -----END SSH SIGNATURE-----",
-      "timestamp": "2026-01-20T14:05:00-08:00",
-      "commit": "90b36ca",
-      "receipts": ["receipts/ssh-signing-verification.txt"]
-    },
-    {
-      "id": "evidence-002",
-      "claim": "Hello Cloud function deployed to GCP and publicly accessible",
-      "enforcement_point": "GCP Cloud Functions gen2 deployment with HTTP trigger",
-      "command": "curl https://us-central1-project-e05df272-63bf-43a4-95d.cloudfunctions.net/hello-cloud",
-      "output": "Hello Cloud",
-      "timestamp": "2026-01-20T15:01:00-08:00",
-      "commit": "c8846f3",
-      "receipts": ["receipts/hello-cloud-verification.png"]
-    },
-    {
-      "id": "evidence-003",
-      "claim": "Dark-pattern lab 1 completed: dark and ethical ToS acceptance designs with documentation",
-      "enforcement_point": "docs/ethics/dark-pattern-lab-1 design deliverables",
-      "command": "Created dark.md, ethical.md, reflection.md, tos_acceptance_dark.html, tos_acceptance_ethical.html",
-      "output": "docs/ethics/dark-pattern-lab-1/ with 5 files (dark design + techniques, ethical redesign + rationale, reflection on effectiveness)",
-      "timestamp": "2026-01-29T12:00:00-08:00",
-      "commit": "b449745"
-    },
-    {
-      "id": "evidence-004",
-      "claim": "Ethical ToS promises (material terms visible, both choices accessible) specified with Clause, Control, Test, and enforcement point",
-      "enforcement_point": "docs/ethics/dark-pattern-lab-1/cct.md",
-      "command": "Created cct.md with 2 CCT entries: (1) material terms visible — content assertion/CI; (2) both choices equally accessible — structure+visibility assertion/CI",
-      "output": "cct.md with clause (falsifiable), control, red-bar test, enforcement point for each promise",
-      "timestamp": "2026-01-29T14:45:00-08:00",
-      "commit": "02c9e73"
-    },
-    {
-      "id": "evidence-005",
-      "claim": "Capstone team repo URL recorded in capstone/team_repo.txt",
-      "enforcement_point": "capstone/team_repo.txt",
-      "command": "Added team repo URL to capstone/team_repo.txt",
-      "output": "https://github.com/janasheirah/CPSC436 in file",
-      "timestamp": "2026-01-29T15:30:00-08:00",
-      "commit": "ca91127"
-    },
-    {
-      "id": "evidence-006",
       "claim": "Design pack deliverable complete: 5 claims, 5 CCT entries, 5 ethics ledger entries, 5 evidence plans — all cross-referenced and validated by cctChecker agent",
       "enforcement_point": "docs/claims.md + docs/cct_v1.md + docs/ethics_ledger_v1.md + docs/evidence_plan.md",
       "command": "git diff HEAD~1 --stat (docs/claims.md, docs/cct_v1.md, docs/ethics_ledger_v1.md, docs/evidence_plan.md updated)",
